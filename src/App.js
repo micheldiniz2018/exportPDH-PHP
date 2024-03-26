@@ -1,25 +1,44 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { Component } from "react";
+import Stove from "./components/stove";
+import Oven from "./components/oven";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  /**
+   * lighter color
+   */
+  state = {
+    lighter: [
+      { id: 1, value: '#008000' },
+      { id: 2, value: '#CD853F' },
+      { id: 3, value: '#9370DB' },
+      { id: 4, value: '#FF4500' },
+      { id: 5, value: '#FFFF00' },
+    ],
+  };
+
+  handleRestart = () => {
+    window.location.reload();
+  };
+
+  /**
+   * build a stove
+   */
+  render() {
+    return (
+      <div className="main__wrap">
+        <main className="container">
+          <div className="card__box">
+            <Stove
+              lighters = {this.state.lighter}
+            />
+          </div>
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
